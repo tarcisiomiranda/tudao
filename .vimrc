@@ -1,5 +1,5 @@
 " For install execute command bellow
-" sudo curl -L "URL" -o ~/.vimrc
+" sudo curl -L "https://raw.githubusercontent.com/tarcisiomiranda/tudao/main/.vimrc" -o ~/.vimrc
 " Don't try to be vi compatible
 set nocompatible
 
