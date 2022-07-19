@@ -92,7 +92,7 @@ set listchars=tab:▸\ ,eol:¬
 " Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
-# Pegar espacos pelo VIM
+" Pegar espacos pelo VIM
 set listchars=eol:¬,tab:->_,trail:~,extends:>,precedes:<,space:·
 
 " Color scheme (terminal)
