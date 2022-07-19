@@ -86,14 +86,15 @@ vnoremap <F1> :set invfullscreen<CR>
 map <leader>q gqip
 
 " Visualize tabs and newlines
-set listchars=tab:▸\ ,eol:¬
+"set listchars=tab:▸\ ,eol:¬
 " Uncomment this to enable by default:
 " set list " To enable by default
 " Or use your leader key + l to toggle on/off
-map <leader>l :set list!<CR> " Toggle tabs and EOL
+"map <leader>l :set list!<CR> " Toggle tabs and EOL
 
 " Pegar espacos pelo VIM
 set listchars=eol:¬,tab:->_,trail:~,extends:>,precedes:<,space:·
+set list
 
 " Color scheme (terminal)
 set t_Co=256
