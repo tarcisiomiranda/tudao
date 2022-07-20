@@ -14,9 +14,6 @@ syntax on
 " For plugins to load correctly
 filetype plugin indent on
 
-" TODO: Pick a leader key
-" let mapleader = ","
-
 " Security
 set modelines=0
 
@@ -85,15 +82,16 @@ vnoremap <F1> :set invfullscreen<CR>
 " Formatting
 map <leader>q gqip
 
-" Visualize tabs and newlines
-"set listchars=tab:▸\ ,eol:¬
-" Uncomment this to enable by default:
-" set list " To enable by default
-" Or use your leader key + l to toggle on/off
-"map <leader>l :set list!<CR> " Toggle tabs and EOL
+" Encoding UTF-8
+scriptencoding utf-8
+set encoding=utf-8
 
 " Pegar espacos pelo VIM
-set listchars=eol:¬,tab:->_,trail:~,extends:>,precedes:<,space:·
+if has("patch-7.4.710")
+    set listchars=tab:▸\ ,eol:¬,trail:~,extends:>,precedes:<,space:·
+else
+    set listchars=tab:▸\ ,eol:¬,trail:~,extends:>,precedes:<
+endif
 set list
 
 " Color scheme (terminal)
@@ -104,4 +102,3 @@ let g:solarized_termtrans=1
 " put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
 " in ~/.vim/colors/ and uncomment:
 " colorscheme solarized
-
