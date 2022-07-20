@@ -1,4 +1,5 @@
 " For install execute command bellow
+" If your use centos7 download new version vim https://gist.github.com/yevrah/21cdccc1dc65efd2a4712781815159fb#file-upgrade-vim-L8
 " sudo curl -L "https://raw.githubusercontent.com/tarcisiomiranda/tudao/main/.vimrc" -o ~/.vimrc
 " Don't try to be vi compatible
 set nocompatible
