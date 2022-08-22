@@ -7,21 +7,22 @@ sudo apt-get install cryptsetup
 ### To decrypt the volume:
 
 ```
-sudo cryptsetup luksOpen /dev/sda1 my_encrypted_volume
+sudo cryptsetup luksOpen /dev/sda1 luks_1
+sudo mount /dev/mapper/luks_1 /mnt/storage4/
 ```
 ### Now you can mount it as usual:
 ```
-sudo mkdir /media/my_device
-sudo mount /dev/mapper/my_encrypted_volume /media/my_device
+sudo mkdir /media/luks_1
+sudo mount /dev/mapper/luks_1 /media/luks_1
 ```
 ### To lock the container again, it needs to be unmounted first:
 
 ```
-sudo umount /media/my_device
-sudo cryptsetup luksClose my_encrypted_volume
+sudo umount /media/luks_1
+sudo cryptsetup luksClose luks_1
 ```
 ### To automatically put it in the /media location, use the udisks tool
 
 ```
-sudo udisks --mount /dev/mapper/my_encrypted_volume
+sudo udisks --mount /dev/mapper/luks_1
 ```
