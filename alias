@@ -1,4 +1,5 @@
 # Print pretty using dockerps
 echo "alias dockerps='sudo docker ps --format \"table {{.Names}}\t{{.State}}\t{{.Ports}}\"'" >> ~/.bashrc && \
-echo "alias dockerpc='sudo docker ps --format \"table {{.Names}}\t{{.State}}\"'" >> ~/.bashrc && \
+echo "alias dockerpc='sudo docker ps --format \"table {{.Names}}\t{{.Ports}}\"'" >> ~/.bashrc && \
+echo "alias dockercc='sudo docker ps --format \"table {{.Names}}\t{{.State}}\"'" >> ~/.bashrc && \
 echo "alias dockerip=\"sudo docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}'\"" >> ~/.bashrc && bash
