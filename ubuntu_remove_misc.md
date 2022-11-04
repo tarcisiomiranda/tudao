@@ -1,4 +1,4 @@
-# Remove CLOUD-INIT, LXD and SNAPD
+## Remove CLOUD-INIT, LXD and SNAPD
 ```
 sudo snap remove --purge lxd \
 && sudo snap remove --purge core20 \
