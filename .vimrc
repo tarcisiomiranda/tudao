@@ -88,12 +88,12 @@ scriptencoding utf-8
 set encoding=utf-8
 
 " Pegar espacos pelo VIM
-if has("patch-7.4.710")
-    set listchars=tab:▸\ ,eol:¬,trail:~,extends:>,precedes:<,space:·
-else
-    set listchars=tab:▸\ ,eol:¬,trail:~,extends:>,precedes:<
-endif
-set list
+" if has("patch-7.4.710")
+"     set listchars=tab:▸\ ,eol:¬,trail:~,extends:>,precedes:<,space:·
+" else
+"     set listchars=tab:▸\ ,eol:¬,trail:~,extends:>,precedes:<
+" endif
+" set list
 
 " Color scheme (terminal)
 set t_Co=256
