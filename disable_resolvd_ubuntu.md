@@ -21,3 +21,4 @@
 
 ## Sources
 - https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu
+- https://yenthanh.medium.com/some-simple-things-for-tuning-your-ubuntu-server-3db99383eadb
