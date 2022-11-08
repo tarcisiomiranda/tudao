@@ -1,3 +1,6 @@
-apt-get install iputils-ping -y
-apt update
-apt install netcat -y
+## Install netcat and ping
+```
+apt-get update \
+&& apt-get install iputils-ping -y \
+&& apt-get install netcat -y
+```
