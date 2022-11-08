@@ -22,3 +22,11 @@
 ## Sources
 - https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu
 - https://yenthanh.medium.com/some-simple-things-for-tuning-your-ubuntu-server-3db99383eadb
+
+
+## Revert
+```
+ln -s /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+systemctl restart systemd-resolved
+systemctl enable systemd-resolved
+```
