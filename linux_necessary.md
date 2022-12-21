@@ -1,5 +1,7 @@
 # Install YQ
 ```
-wget https://github.com/mikefarah/yq/releases/download/yq_linux_amd64/v4.30.6.tar.gz -O - |\
-  tar xz && mv v4.30.6 /usr/bin/yq
+export VERSION=v4.30.6 && \
+export BINARY=yq_linux_amd64 && \
+wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY} -O /usr/bin/yq && \
+chmod +x /usr/bin/yq
   ```
