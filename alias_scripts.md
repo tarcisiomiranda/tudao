@@ -71,3 +71,10 @@ TimeoutStartSec=0
 [Install]
 WantedBy=default.target
 EOF
+
+## Enable service
+```
+systemctl daemon-reload && \
+systemctl enable meuip && \
+systemctl status meuip
+```
