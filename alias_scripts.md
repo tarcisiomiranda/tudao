@@ -1,4 +1,5 @@
-# Print pretty using dockerps and show partitions
+## Print pretty using dockerps and show partitions
+```
 echo $'\n # Docker alias and Display Filesystem' >> ~/.bashrc && \
 echo "alias dockerps='sudo docker ps --format \"table {{.Names}}\t{{.State}}\t{{.Ports}}\"'" >> ~/.bashrc && \
 echo "alias dockerpc='sudo docker ps --format \"table {{.Names}}\t{{.Ports}}\"'" >> ~/.bashrc && \
@@ -6,10 +7,7 @@ echo "alias dockercc='sudo docker ps --format \"table {{.Names}}\t{{.State}}\"'"
 echo "alias dockerip='sudo docker inspect -f \"{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}\"'" >> ~/.bashrc && \
 echo "alias dockerss='sudo docker ps --format \"table {{.Names}}\t{{.CreatedAt}}\t{{.RunningFor}}\t{{.Size}}\"'" >> ~/.bashrc && \
 echo "alias dff='df -TPh|egrep -v \"overlay|loop|shm|tmpfs\"'" >> ~/.bashrc && bash
-
-
-
-
+```
 
 ## OR ONLY COMMAND USING EOL
 ```
@@ -33,12 +31,12 @@ export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
 EOF
 ```
 
-
-# Other
+# exclude commnet caracteres
 ```
 cat /etc/sudoers.d/* /etc/sudoers | egrep -v '(#|//|^[[:space:]]*$)'
 ```
 
+<hr/>
 
 # Script for show ip login screen
 ***Start***
