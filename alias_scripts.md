@@ -71,6 +71,7 @@ TimeoutStartSec=0
 [Install]
 WantedBy=default.target
 EOF
+```
 
 ## Enable service
 ```
