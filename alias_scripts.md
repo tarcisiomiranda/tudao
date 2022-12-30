@@ -38,3 +38,38 @@ EOF
 ```
 cat /etc/sudoers.d/* /etc/sudoers | egrep -v '(#|//|^[[:space:]]*$)'
 ```
+
+
+# Script for show ip login screen
+***Start***
+## Create script
+```
+echo -n $'\n' | cat - /etc/issue > /tmp/issue.tmp
+mv /etc/issue /etc/issue.bkp && \
+mv /tmp/issue.tmp /etc/issue && \
+mkdir -p /opt/meuip/ && \
+touch /opt/meuip/look.sh && \
+chmod u+x /opt/meuip/look.sh && \
+cat <<EOF >> /opt/meuip/look.sh
+#!/bin/sh
+meuip=\`ifconfig enp0s3 | awk '/inet /{print \$2}' | cut -f2 -d':'\`
+sed -i "1s/.*/\$meuip/" /etc/issue
+EOF
+```
+
+## Create service
+```
+cat <<EOF >> /etc/systemd/system/meuip.service
+[Unit]
+After=network-online.target
+Description=Run script at startup after network becomes reachable and set ip home screen
+
+[Service]
+Type=simple
+RemainAfterExit=yes
+ExecStart=/opt/meuip/look.sh
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target
+EOF
