@@ -6,7 +6,8 @@ echo "alias dockerpc='sudo docker ps --format \"table {{.Names}}\t{{.Ports}}\"'"
 echo "alias dockercc='sudo docker ps --format \"table {{.Names}}\t{{.State}}\"'" >> ~/.bashrc && \
 echo "alias dockerip='sudo docker inspect -f \"{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}\"'" >> ~/.bashrc && \
 echo "alias dockerss='sudo docker ps --format \"table {{.Names}}\t{{.CreatedAt}}\t{{.RunningFor}}\t{{.Size}}\"'" >> ~/.bashrc && \
-echo "alias dff='df -TPh|egrep -v \"overlay|loop|shm|tmpfs\"'" >> ~/.bashrc && bash
+echo "alias dff='df -TPh|egrep -v \"overlay|loop|shm|tmpfs|devtmpfs\"'" >> ~/.bashrc && bash
+echo "alias dffi='df -TPhi|egrep -v \"overlay|loop|shm|tmpfs|devtmpfs\"'" >> ~/.bashrc && bash
 ```
 
 ## OR ONLY COMMAND USING EOL
@@ -20,7 +21,8 @@ alias dockerip='sudo docker inspect -f "{{range.NetworkSettings.Networks}}{{.IPA
 alias dockerss='sudo docker ps --format "table {{.Names}}\t{{.CreatedAt}}\t{{.RunningFor}}\t{{.Size}}"'
 
 # Show pretty partitions
-alias dff='df -TPh|egrep -v "overlay|loop"'
+alias dff='df -TPh|egrep -v "overlay|loop|shm|tmpfs|devtmpfs"'
+alias dffi='df -TPhi|egrep -v "overlay|loop|shm|tmpfs|devtmpfs"'
 
 # Git show branch
 parse_git_branch() {
