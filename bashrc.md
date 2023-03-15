@@ -21,8 +21,9 @@ alias dockerip='sudo docker inspect -f "{{range.NetworkSettings.Networks}}{{.IPA
 alias dockerss='sudo docker ps --format "table {{.Names}}\t{{.CreatedAt}}\t{{.RunningFor}}\t{{.Size}}"'
 
 # Show pretty partitions
-alias dff='df -TPh|egrep -v "overlay|loop|shm|tmpfs|devtmpfs"'
-alias dffi='df -TPhi|egrep -v "overlay|loop|shm|tmpfs|devtmpfs"'
+alias dff='df -TPh | egrep -v "overlay|loop|shm|tmpfs|devtmpfs"'
+alias dffi='df -TPhi | egrep -v "overlay|loop|shm|tmpfs|devtmpfs"'
+alias lsblk='lsblk | egrep -v "loop[0-9]{1,2}"'
 
 # Git show branch
 parse_git_branch() {
