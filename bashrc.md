@@ -20,6 +20,11 @@ alias dockercc='sudo docker ps --format "table {{.Names}}\t{{.State}}"'
 alias dockerip='sudo docker inspect -f "{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"'
 alias dockerss='sudo docker ps --format "table {{.Names}}\t{{.CreatedAt}}\t{{.RunningFor}}\t{{.Size}}"'
 
+# Salt stack
+alias sall='docker exec -it saltstack bash'
+alias del='salt-key -d '
+alias acc='salt-key -a '
+
 # Show pretty partitions
 alias dff='df -TPh | egrep -v "overlay|loop|shm|tmpfs|devtmpfs"'
 alias dffi='df -TPhi | egrep -v "overlay|loop|shm|tmpfs|devtmpfs"'
