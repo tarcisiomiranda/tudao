@@ -30,6 +30,11 @@ alias dff='df -TPh | egrep -v "overlay|loop|shm|tmpfs|devtmpfs"'
 alias dffi='df -TPhi | egrep -v "overlay|loop|shm|tmpfs|devtmpfs"'
 alias lsblk='lsblk | egrep -v "loop[0-9]{1,2}"'
 
+# Git
+alias git.email='git config --local user.email'
+alias git.name='git config --local user.name'
+alias git.remote='while IFS= read -r line; do echo "$line"; done < .git/config | grep "url =" | cut -d " " -f 3'
+
 # Git show branch
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
