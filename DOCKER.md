@@ -20,5 +20,11 @@ docker images --filter "dangling=true" -q
 
 ## Removendo images nao usadas
 ```
-docker rmi $(docker images --filter "dangling=true" -q)
+docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
 ```
+
+
+## Remover images de container com exit
+`
+docker rm $(docker ps -qa --no-trunc --filter "status=exited")
+`
