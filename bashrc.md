@@ -46,7 +46,7 @@ EOF
 
 # exclude commnet caracteres
 ```
-cat /etc/sudoers.d/* /etc/sudoers | egrep -v '(#|//|^[[:space:]]*$)'
+cat /etc/sudoers.d/* /etc/sudoers | egrep -v '(;|#|//|^[[:space:]]*$)'
 ```
 
 <hr/>
