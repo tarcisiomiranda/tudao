@@ -3,8 +3,8 @@
 
 :global sendTelegramMessage do={
     :local message [:tostr $1]
-    :local botToken "bot5561402281:AAHpIpMbgFJDj6QVYg8Z7lG3i6FCr3Nfm7o"
-    :local chatID "508844726"
+    :local botToken "bot999999999:"
+    :local chatID "222222222"
     :local urlApi "https://api.telegram.org/"
     :local url ($urlApi . $botToken . "/sendMessage?chat_id=" . $chatID . "&text=<code>" . $message . "</code>&parse_mode=HTML")
     :log info $url
