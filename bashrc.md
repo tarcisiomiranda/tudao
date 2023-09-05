@@ -43,6 +43,7 @@ export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
 
 EOF
 ```
+![image](https://github.com/tarcisiomiranda/tudao/assets/43272007/4620c231-cb0c-4f0c-baa0-2bff1c13f75c)
 
 # exclude commnet caracteres
 ```
