@@ -4,6 +4,11 @@
 ## Tamanho
 `docker inspect traefik | grep -i logpath | awk -F':' '{print $2}' | tr -d '[:space:]' | sed 's/["\,]/\n/g' | xargs du -sh`
 
+## Listar ips da rece
+```
+docker network inspect ce_frontend | jq '.[0].Containers[] | {name: .Name, ip: .IPv4Address}'
+```
+
 ## Verificar todos containers
 `docker inspect $(docker ps -aq) | grep -i logpath | awk -F':' '{print $2}' | tr -d '[:space:]' | sed 's/["\,]/\n/g'`
 
