@@ -19,6 +19,7 @@ alias dockerpc='sudo docker ps --format "table {{.Names}}\t{{.Ports}}"'
 alias dockercc='sudo docker ps --format "table {{.Names}}\t{{.State}}"'
 alias dockerip='sudo docker inspect -f "{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"'
 alias dockerss='sudo docker ps --format "table {{.Names}}\t{{.CreatedAt}}\t{{.RunningFor}}\t{{.Size}}"'
+alias dockera='sudo docker ps -a --format "table {{.Names}}\t{{.CreatedAt}}\t{{.Status}}\t{{.RunningFor}}\t{{.Size}}"'
 
 # Salt stack
 alias sall='docker exec -it saltstack bash'
