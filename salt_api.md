@@ -10,6 +10,10 @@ rest_cherrypy:
   port: 8000
   ssl_crt: /etc/pki/tls/certs/localhost.crt
   ssl_key: /etc/pki/tls/certs/localhost.key
+
+netapi_enable_clients:
+  - local
+
 external_auth:
   pam:
     salt_python:
@@ -26,4 +30,10 @@ curl -sSk https://192.168.29.40:8000/login \
     -d password=vasco \
     -d eauth=pam
 
+curl -sSk https://192.168.29.40:8000 \
+    -H "Accept: application/x-yaml" \
+    -H "X-Auth-Token: vasco_da_gama" \
+    -d client='local' \
+    -d tgt='*' \
+    -d fun='test.ping'
 ```
