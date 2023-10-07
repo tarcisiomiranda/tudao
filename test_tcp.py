@@ -13,9 +13,21 @@ def test_connectivity(ip, port):
         sock.close()
     return True
 
-def read_file_and_test_connections(input_file, output_file):
+def get_ports(ports_string):
+    # Partir por | e -
+    port_entries = ports_string.split('|')
+    ports = []
+    for entry in port_entries:
+        if '-' in entry:
+            start, end = [int(e) for e in entry.split('-')]
+            ports.extend(list(range(start, end + 1)))
+        else:
+            ports.append(int(entry))
+    return ports
+
+def read_input(input_file, output_file):
     results = {}
-    
+
     with open(input_file, 'r') as file:
         for line in file.readlines():
             if ';' not in line:
@@ -27,18 +39,13 @@ def read_file_and_test_connections(input_file, output_file):
                 print(f"Invalid line: {line.strip()}")
                 continue
 
-            cid, ip, ports = parts
-            
-            try:
-                ports = [int(port) for port in ports.split('-')]
-            except ValueError:
-                print(f"Invalid ports: {ports}")
-                continue
+            cid, ip, ports_string = parts
+            ports = get_ports(ports_string)
 
             results_key = (cid, ip)
             if results_key not in results:
                 results[results_key] = []
-            
+
             for port in ports:
                 connection_ok = test_connectivity(ip, port)
                 results[results_key].append((port, connection_ok))
@@ -61,4 +68,14 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    read_file_and_test_connections(args.file, args.csv)
+    read_input(args.file, args.csv)
+
+'''
+# syndic.txt
+TMM;192.168.29.30;22|80|443|3000-3003|8000-8003|9109
+DEV;192.168.29.40;22|80|443|3000-3003|8000-8003|9109
+ENV;192.168.29.50;22|80|443|3000-3003|8000-8003|9109
+
+# Run script
+python run.py --file syndics.txt --csv result.csv
+'''
