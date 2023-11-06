@@ -157,6 +157,7 @@ module.exports = {
 ### Sublime Text
 ```
 [
+    { "keys": ["ctrl+a"], "command": "select_all" },
     { "keys": ["ctrl+z"], "command": "undo" },
     { "keys": ["ctrl+x"], "command": "cut" },
     { "keys": ["ctrl+c"], "command": "copy" },
@@ -170,5 +171,7 @@ module.exports = {
 		]
 	},
 	{ "keys": ["ctrl+f"], "command": "show_panel", "args": {"panel": "find", "reverse": false} },
+	{ "keys": ["alt+up"], "command": "swap_line_up" },
+	{ "keys": ["alt+down"], "command": "swap_line_down" },
 ]
 ```
