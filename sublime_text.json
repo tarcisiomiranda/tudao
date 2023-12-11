@@ -1,3 +1,4 @@
+// Mac
 [
     { "keys": ["ctrl+a"], "command": "select_all" },
     { "keys": ["ctrl+z"], "command": "undo" },
@@ -25,4 +26,13 @@
 	{ "keys": ["ctrl+end"], "command": "move_to", "args": {"to": "eof", "extend": false} },
 	{ "keys": ["ctrl+shift+home"], "command": "move_to", "args": {"to": "bof", "extend": true} },
 	{ "keys": ["ctrl+shift+end"], "command": "move_to", "args": {"to": "eof", "extend": true} },
+]
+
+// Linux
+[
+	{ "keys": ["alt+up"], "command": "swap_line_up" },
+	{ "keys": ["ctrl+shift+up"], "command": "select_lines", "args": {"forward": false} },
+	{ "keys": ["ctrl+shift+down"], "command": "select_lines", "args": {"forward": true} },
+	{ "keys": ["alt+down"], "command": "swap_line_down"},
+	{ "keys": ["ctrl+space"], "command": "toggle_comment", "args": {"block": false} }
 ]
