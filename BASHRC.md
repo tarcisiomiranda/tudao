@@ -110,3 +110,17 @@ systemctl daemon-reload && \
 systemctl enable meuip && \
 systemctl status meuip
 ```
+
+## install Buildx
+```
+wget https://github.com/docker/buildx/releases/download/v0.12.0/buildx-v0.12.0.linux-amd64
+mkdir  ~/.docker/cli-plugins/
+chmod a+x buildx-v0.12.0.linux-amd64
+cp buildx-v0.12.0.linux-amd64 ~/.docker/cli-plugins/docker-buildx
+docker buildx version
+```
+
+## Buid with progess plain text
+```
+docker buildx build --progress=plain -f ./docker/svelte/Dockerfile -t tarcisiome/svelte:latest .
+```
