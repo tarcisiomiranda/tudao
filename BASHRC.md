@@ -128,4 +128,7 @@ docker buildx build --progress=plain -f ./docker/svelte/Dockerfile -t tarcisiome
 ## ADD minha key
 ```
 mkdir -p ~/.ssh && echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/NzJRrc7OXFmHoqghOVOvxb5HyTNt4uSQ95N+BlTm+zLQMBm3VTPhxMR18bZJBWwEo5ecNEJisCiAIWf25R9i4vTJCFie8zk3IL3b5qbHMfgW8pAjoy8NiQLWzXhnXQsbX587uBi9H++p0POUqxNuJVO0Qd2r6ZSmbA8l1jrjDPAB+ER89wFFNKQ9QsNdktB94/3XP04kQlqCb9Gb6jhDaN1irznmtl7M4lrlz/DLfzORKTIOrEVRuc6YGtJyzJPEtERwFIXYuDmpxKuWFuDABenRQaiOIEz98AUk1XH3at0X11Ad1H+OJFmlJAXuD/q1hD/Y9m99HDfGk6Jj7jXt" >> ~/.ssh/authorized_keys
+
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
 ```
