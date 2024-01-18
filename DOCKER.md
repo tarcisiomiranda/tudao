@@ -1,4 +1,9 @@
 # Verificar o arquivo de log e o tamanha
+## Pegar o tamanho em GB das imagens do containers
+```
+docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}"
+```
+
 ## Listar
 ```
 docker inspect traefik | grep -i logpath | awk -F':' '{print $2}' | tr -d '[:space:]' | sed 's/["\,]/\n/g'
