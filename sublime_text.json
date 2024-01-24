@@ -36,3 +36,10 @@
 	{ "keys": ["alt+down"], "command": "swap_line_down"},
 	{ "keys": ["ctrl+space"], "command": "toggle_comment", "args": {"block": false} }
 ]
+
+
+// Preferences.sublime-settings
+{
+	"font_size": 14,
+	"draw_white_space": "all",
+}
