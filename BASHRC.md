@@ -12,8 +12,20 @@ echo "alias dffi='df -TPhi|egrep -v \"overlay|loop|shm|tmpfs|devtmpfs\"'" >> ~/.
 
 ## OR ONLY COMMAND USING EOL
 ```
-cat <<EOF >> ~/.bashrc
-# Formats for docker
+cat <<EOF > ~/.bashrc
+# .bashrc
+
+# User specific aliases and functions
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# Docker Formats
 alias dockerps='sudo docker ps --format "table {{.Names}}\t{{.State}}\t{{.Ports}}"'
 alias dockerpc='sudo docker ps --format "table {{.Names}}\t{{.Ports}}"'
 alias dockercc='sudo docker ps --format "table {{.Names}}\t{{.State}}"'
@@ -21,29 +33,78 @@ alias dockerip='sudo docker inspect -f "{{range.NetworkSettings.Networks}}{{.IPA
 alias dockerss='sudo docker ps --format "table {{.Names}}\t{{.CreatedAt}}\t{{.RunningFor}}\t{{.Size}}"'
 alias dockera='sudo docker ps -a --format "table {{.Names}}\t{{.CreatedAt}}\t{{.Status}}\t{{.RunningFor}}\t{{.Size}}"'
 
-# Salt stack
+# Saltstack
 alias sall='docker exec -it saltstack bash'
-alias del='salt-key -d '
-alias acc='salt-key -a '
+alias salk='docker exec -it saltstack salt-key'
+alias del='docker exec -it saltstack salt-key -y -d '
+alias acc='docker exec -it saltstack salt-key -y -a '
 
-# Show pretty partitions
+# Pretty Partitions
 alias dff='df -TPh | egrep -v "overlay|loop|shm|tmpfs|devtmpfs"'
 alias dffi='df -TPhi | egrep -v "overlay|loop|shm|tmpfs|devtmpfs"'
 alias lsblk='lsblk | egrep -v "loop[0-9]{1,2}"'
 
-# Git
+# Git Tools
 alias git.email='git config --local user.email'
 alias git.name='git config --local user.name'
-alias git.remote='while IFS= read -r line; do echo "$line"; done < .git/config | grep "url =" | cut -d " " -f 3'
+alias git.remote='while IFS= read -r line; do echo ""; done < .git/config | grep "url =" | cut -d " " -f 3'
 
-# Git show branch
-parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+# Group Containers
+docker_ps_grouped () {
+    docker ps --format '{{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}\t{{.Labels}}' | awk -F "\t" '
+    BEGIN {
+      print "CONTAINER ID\tNAMES\tIMAGE\tSTATUS\tPORTS\tPROFILE";
+      no_profile_group = ""; # String to hold containers without a profile
+    }
+
+    {
+      # Initialize the variable to hold the profile label value
+      profile_found = 0;
+
+      # Split the labels field using commas as delimiters
+      n = split($6, a, ",");
+      for (i = 1; i <= n; i++) {
+        # Split each label into key-value pairs using '=' as delimiter
+        split(a[i], kv, "=");
+        if (kv[1] == "com.docker.compose.project") {
+          profile = kv[2];
+          profile_found = 1;
+          break;
+        }
+      }
+
+      # Group the output by the 'com.docker.compose.project' label or set to 'no_profile'
+      if (profile_found) {
+        grouped[profile] = grouped[profile] $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5 "\n";
+      } else {
+        no_profile_group = no_profile_group $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5 "\n";
+      }
+    }
+
+    END {
+      for (p in grouped) {
+        if (p != "") {
+          print "---- " p " ----";
+          print "CONTAINER ID\tNAMES\tIMAGE\tSTATUS\tPORTS";
+          print grouped[p];
+        }
+      }
+      if (no_profile_group != "") {
+        print "---- no_profile ----";
+        print "CONTAINER ID\tNAMES\tIMAGE\tSTATUS\tPORTS";
+        print no_profile_group;
+      }
+    }
+  '
 }
-export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
+
+alias dks=docker_ps_grouped
+
+export PS1="[\u]@[\h] \[\e[32m\]\w \[\e[91m\][$(git branch --show-current)]\[\e[00m\]$ "
 
 EOF
 ```
+
 ### For alpine linux
 ```
 apk add bash
