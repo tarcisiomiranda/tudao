@@ -47,7 +47,6 @@ alias lsblk='lsblk | egrep -v "loop[0-9]{1,2}"'
 # Git Tools
 alias git.email='git config --local user.email'
 alias git.name='git config --local user.name'
-alias git.remote='while IFS= read -r line; do echo ""; done < .git/config | grep "url =" | cut -d " " -f 3'
 
 # Group Containers
 docker_ps_grouped () {
@@ -100,26 +99,8 @@ docker_ps_grouped () {
 
 alias dks=docker_ps_grouped
 
-export PS1="[\u]@[\h] \[\e[32m\]\w \[\e[91m\][$(git branch --show-current)]\[\e[00m\]$ "
+export PS1="[\u]@\[\e[34m\]\[\e[0m\]-[\h] \[\e[32m\]\w \[\e[91m\][$(git branch --show-current)]\[\e[00m\]$ "
 
-EOF
-```
-
-### For alpine linux
-```
-apk add bash
-DE:
-root:x:0:0:root:/root:/bin/ash
-PARA:
-root:x:0:0:root:/root:/bin/bash
-```
-
-***Load bash on Login***
-```
-cat <<EOF >> ~/.bash_profile
-if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-fi
 EOF
 ```
 
