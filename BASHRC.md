@@ -87,7 +87,13 @@ docker_ps_grouped () {
 
 alias dks=docker_ps_grouped
 
-export PS1="[\u]@\[\e[34m\]\[\e[0m\]-[\h] \[\e[32m\]\w \[\e[91m\][$(git branch --show-current)]\[\e[00m\]$ "
+git_branch_prompt() {
+  if git rev-parse --git-dir > /dev/null 2>&1; then
+    echo -n "[$(git branch --show-current)] "
+  fi
+}
+
+export PS1="[\u]@\[\e[34m\]\[\e[0m\]-[\h] \[\e[32m\]\w \[\e[91m\]\$(git_branch_prompt)\[\e[00m\]$ "
 
 EOF
 ```
