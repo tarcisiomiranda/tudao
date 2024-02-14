@@ -93,7 +93,17 @@ git_branch_prompt() {
   fi
 }
 
-export PS1="[\u]@\[\e[34m\]\[\e[0m\]-[\h] \[\e[32m\]\w \[\e[91m\]\$(git_branch_prompt)\[\e[00m\]$ "
+get_cid() {
+  local cid=$(grep "cmdb" /srv/xtk/config/install.ini | cut -d '=' -f2 | tr -d ' ')
+  if [[ -z "$cid" ]]; then
+    echo "N/A"
+  else
+    echo $cid
+  fi
+}
+
+
+export PS1="[\u]@\[\e[34m\][$(get_cid)]\[\e[0m\][\h] \[\e[32m\]\w \[\e[91m\]\$(git_branch_prompt)\[\e[00m\]$ "
 
 EOF
 ```
